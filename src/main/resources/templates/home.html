@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha256-sHwgyDk4CGNYom267UJX364ewnY4Bh55d53pxP5WDug= sha512-mkkeSf+MM3dyMWg3k9hcAttl7IVHe2BA1o/5xKLl4kBaP0bih7Mzz/DBy4y6cNZCHtE2tPgYBYH/KtEjOQYKxA==" crossorigin="anonymous" />
+    <title>Пости</title>
+  </head>
+  <body>
+
+	<div class="container">
+		<div class="row">
+			<form method="POST" action="/post">
+				<div class="form-group">
+					<label for="post-text">Що нового?</label>
+					<div class="pull-right">
+						Доброго дня, <span th:text="${currentUser.login}">Bob</span>
+							<a class="btn btn-link btn-sm" href="/logout"><span class="glyphicon glyphicon-log-out"></span> Вийти</a>
+					</div>
+					<textarea class="form-control" rows="3" name="text" id="post-text"></textarea>
+				</div>
+				<button type="submit" class="btn btn-success">Додати</button>				
+			</form>
+		</div>
+	
+		<div class="row" th:each="post: ${posts}">
+			<hr/>
+	        <strong class="pull-left primary-font" th:text="${post.author.login}">Логін</strong>
+	        <small class="pull-right text-muted">
+	           <span class="glyphicon glyphicon-time"></span> 
+	           	<span th:text="${#dates.format(post.createdAt, 'HH:mm dd.MM.yy')}">19:05 14.05.14</span>
+            </small>
+	        <br/>
+	        <div class="text-justify" th:text="${post.text}">Текст повідомлення</div>
+	    </div>
+
+   	    <ul class="pagination" th:if="${pagesCount} > 1">
+		    <li th:each="page: ${#numbers.sequence(1, pagesCount)}" th:class="${page} == ${currentPage} ? 'active'">
+		      <a href="#" th:href="@{/home(page=${page})}">
+		        <span th:text="${page}"></span>
+		      </a>
+		    </li>
+		</ul>
+
+	    <hr/>
+	    	    
+	    <div class="row">
+	    	<ul class="list-inline">
+				<li class="text-center" th:each="user: ${users}">
+					<span th:text="${user.login}">Користувач</span><br/>
+					<form action="/subscribe" method="POST">
+						<input type="hidden" name="login" th:value="${user.login}"/>
+		    			<button class="btn btn-info btn-sm">Підписатись</button>
+		    		</form>
+				</li>
+			</ul>
+	    </div>
+	    
+	</div>
+  </body>
+</html>
+
