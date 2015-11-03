@@ -21,13 +21,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
+     // дозволити анонімним користувачам заходити на ці каталоги
             .antMatchers("/", "/register","/index","/signup","/login",
             		"/css/*","/images/*","/js/*","/css/fonts/*")
-            .permitAll() // дозволити анонімним користувачам заходити на '/' 
+            .permitAll() 
             .anyRequest().authenticated() // всі інші запити потребують аутентифікації
             .and()
         .formLogin()
-            .loginPage("/login")  // URL логіну
+            .loginPage("/")  // URL логіну
             .usernameParameter("login_logining") // назва параметру з логіном на формі
             .passwordParameter("password_logining")
             .permitAll() // дозволити всім заходити на форму логіну

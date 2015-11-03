@@ -40,13 +40,13 @@
            
            <div class="content">
                <div class="row">
-                 <div class="col-xs-12 col-sm-9 wrap-content-list right">
+                 <div class="col-xs-12 col-sm-9 wrap-content-list left">
                     <div class="text-center">
                         <h1>Найпопулярніше</h1>
                     </div>
                     <ul class="pagination" th:if="${pagesCount} > 1">
         <li th:each="page: ${#numbers.sequence(1, pagesCount)}" th:class="${page} == ${currentPage} ? 'active'">
-          <a href="#" th:href="@{/home(page=${page})}">
+          <a href="#" th:href="@{/list(page=${page})}">
             <span th:text="${page}"></span>
           </a>
         </li>
@@ -59,9 +59,9 @@
     <div class="posts-list-section">
         <div class="content">
             <div class="row">
-
       
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+      <div class="row" th:each="post: ${posts}">
+      <div class="text-center"">
                   <div class="thumbnail block-with-payment">
                       <div class="wrap-img">
                         <a href="">          
@@ -69,10 +69,8 @@
                         </a>                  
                       </div>
                       <div class="caption">                               
-                          <h3 class="text-center">Тут буде опис новини</h3>                     
-                          <p class="text-center">автор 
-                                    <a href="">такий-то чувак</a>
-                           </p>
+                          <h3 class="text-center" th:text="${post.getDescription()}">Тут буде опис новини</h3>                     
+                          <p class="text-center" th:text="${post.author.login}">автор</p>
                       </div>
                       <div class="wrap-btns">
                         <a href="" class="btn btn-green">
@@ -81,72 +79,9 @@
                       </div>                                       
                   </div>               
               </div>  
-			  
-			       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                  <div class="thumbnail block-with-payment">
-                      <div class="wrap-img">
-                        <a href="">          
-                         <img src="images/no-photo.jpg" alt="Colors of Cats">
-                        </a>                  
-                      </div>
-                      <div class="caption">                               
-                          <h3 class="text-center">Тут буде опис новини</h3>                     
-                          <p class="text-center">автор 
-                                    <a href="">такий-то чувак</a>
-                           </p>
-                      </div>
-                      <div class="wrap-btns">
-                        <a href="" class="btn btn-green">
-                                Прочитати
-                        </a>
-                      </div>                                       
-                  </div>               
-              </div>   
-			  
-			       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                  <div class="thumbnail block-with-payment">
-                      <div class="wrap-img">
-                        <a href="">          
-                         <img src="images/no-photo.jpg" alt="Colors of Cats">
-                        </a>                  
-                      </div>
-                      <div class="caption">                               
-                          <h3 class="text-center">Тут буде опис новини</h3>                     
-                          <p class="text-center">автор 
-                                    <a href="">такий-то чувак</a>
-                           </p>
-                      </div>
-                      <div class="wrap-btns">
-                        <a href="" class="btn btn-green">
-                                Прочитати
-                        </a>
-                      </div>                                       
-                  </div>               
-              </div>     
-			  
-			       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                  <div class="thumbnail block-with-payment">
-                      <div class="wrap-img">
-                        <a href="">          
-                         <img src="images/no-photo.jpg" alt="Colors of Cats">
-                        </a>                  
-                      </div>
-                      <div class="caption">                               
-                          <h3 class="text-center">Тут буде опис новини</h3>                     
-                          <p class="text-center">автор 
-                                    <a href="">такий-то чувак</a>
-                           </p>
-                      </div>
-                      <div class="wrap-btns">
-                        <a href="" class="btn btn-green">
-                                Прочитати
-                        </a>
-                      </div>                                       
-                  </div>               
-              </div>     
-        
-           
-          
+      </div>
+      
+            
            </div>
         </div>
     </div>
@@ -169,40 +104,7 @@
         </div>
     </footer>          
 
-    <div class="wrap-off-canvas-menu left" id="off-canvas-menu-left">
-     <div class="close-off-canvas-menu">
-        <span class="text">Категорії</span>
-		<span class="icon icon-menu"></span>
-     </div>
-      
-     <div class="sidebar-menu">
-        <form action=""  id='filterForm'>                  
-        <ul class="filter-menu">   
-                    
-        <li class="open">
-            <div class="name-cat">
-                <span class="open-cat title">Категорії</span>
-            </div>                        
-            <div class="filter-list-cat open">
-                <ul>
-                 
 
-                        <li class="item-category">
-                            <div class="name-cat">
-                                <span class="link-cat">така-то категорія</span>
-                            </div>
-                        </li>
-						
-
-
-                </ul>
-            </div>
-        </li>
-
-    </ul>
-    </form>
-      </div>
-    </div>
     
 </div>
  </body>

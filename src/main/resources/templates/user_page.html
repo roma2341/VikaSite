@@ -46,12 +46,13 @@
                         <img href="userpage" src="images/avatar-img.jpg" alt="" class="avatar-image avatar-image-url"/>
                       </div>
                       <div>   
-                       <span th:text="${user.login}">Такий-то юзер</span>                               
-                     </div>   
-
-                                                
+                       <span th:text="${user.login}">Такий-то юзер</span>   
+                       <a class="btn-info btn-link" href="/logout">Вийти</a>           
+                     </div>  
+                        
                     </div>
                 </div>
+                
                 <div class="col-xs-12 col-sm-9 wrap-content-block">
                   <div class="block-content">
                       <h1>Сповіщення</h1>
@@ -64,57 +65,29 @@
                                     </div>
                                 
                                 <div class="wrap-btns">
-                                    <button type="submit" class="btn btn-green btn-check-changes" form="createReview">Додати запис</button>
+                                    <button type="submit" class="btn btn-green btn-check-changes" >Додати запис</button>
                                 </div>
                             </form>
                         </div>
+                               <ul class="pagination" th:if="${pagesCount} > 1">
+        <li th:each="page: ${#numbers.sequence(1, pagesCount)}" th:class="${page} == ${currentPage} ? 'active'">
+          <a href="#" th:href="@{/userpage(page=${page})}">
+            <span th:text="${page}"></span>
+          </a>
+        </li>
+    	</ul>
                         <div class="wrap-list-message">
-          
-                              <div class="item">    
-                               <span class="remove-item"><i class="glyphicon glyphicon-remove"></i></span> 
+
+                                <div class="item" th:each="post: ${posts}">      
+                               <a th:href="${'remove_post?post_id='+post.id}" class="remove-item"><i class="glyphicon glyphicon-remove"></i></a> 
                                   <div class="title">
                                     <a href=" "> <img src="images/avatar-img.jpg" alt="" class="avatar-image avatar-image-url"/></a>
-                                    <a href=" " class="user-name">user_1</a>
+                                    <h2 class="user-name" th:text="${post.author.login}">user_1</h2>
                                     <span class="date-time" 
-									style="font-size: 15px;>Серпень 27, 2015 в 04:21 </span>     
-                                  </div>                                                
-                                  <div class="message-text">
-                                     - Никто не возвращается из путешествий таким, каким он был раньше.
-- Ты же просто сходил за хлебом.
-- Я видел людей.
-                                  </div>                                                  
+									style="font-size: 15px;" th:text="${post.createdAt}"></span>     
+                                  </div>                                           
+                                  <h2 class="message-text" th:text="${post.getDescription()}">Text</h2>                                                  
                               </div>   
-							     <div class="item">    
-                               <span class="remove-item"><i class="glyphicon glyphicon-remove"></i></span> 
-                                  <div class="title">
-                                    <a href=" "> <img src="images/avatar-img.jpg" alt="" class="avatar-image avatar-image-url"/></a>
-                                    <a href=" " class="user-name">user_1</a>
-                                    <span class="date-time" 
-									style="font-size: 15px;>Серпень 27, 2015 в 04:21 </span>     
-                                  </div>                                                
-                                  <div class="message-text">
-                                     - Никто не возвращается из путешествий таким, каким он был раньше.
-- Ты же просто сходил за хлебом.
-- Я видел людей.
-                                  </div>                                                  
-                              </div>   
-							     <div class="item">    
-                               <span class="remove-item"><i class="glyphicon glyphicon-remove"></i></span> 
-                                  <div class="title">
-                                    <a href=" "> <img src="images/avatar-img.jpg" alt="" class="avatar-image avatar-image-url"/></a>
-                                    <a href=" " class="user-name">user_1</a>
-                                    <span class="date-time" 
-									style="font-size: 15px;>Серпень 27, 2015 в 04:21 </span>     
-                                  </div>                                                
-                                  <div class="message-text">
-                                     - Никто не возвращается из путешествий таким, каким он был раньше.
-- Ты же просто сходил за хлебом.
-- Я видел людей.
-                                  </div>                                                  
-                              </div>   
-                            
-                                                         
-                          
                         </div>
                       </div>
 

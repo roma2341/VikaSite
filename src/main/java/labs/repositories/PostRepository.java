@@ -12,4 +12,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface PostRepository extends CrudRepository<Post, Long> {
     public Page<Post> findByAuthorInOrderByCreatedAtDesc(Set<User> users, Pageable pageable);
     Page<Post> findByAuthorId(Long authorId, Pageable pageable);
+    Page<Post> findAll(Pageable pageable);
 }

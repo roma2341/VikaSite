@@ -9,6 +9,7 @@
             
         </head>
 <body>
+
 <div class="wrap-all-content">
     <div class="wrapper main-body">
       <header class="wrap-header main-header">
@@ -49,6 +50,14 @@
             <div class="intro-lead-in">Новий український блог-сервіс набирає обертів  </div>  
 			<div class="intro-lead-in"> Ми чекаємо на Твоїх друзів</div>  
 			<div class="intro-lead-in"> Ми чекаємо саме на тебе</div> 
+<div class="alert alert-info" th:if="${param.logout}">
+<span class="glyphicon glyphicon-log-out"></span> Yout has log out
+</div>
+<div class="alert alert-danger" th:if="${param.error}" >
+ТЕСТ
+<span class="glyphicon glyphicon-exclamation-sign"></span> Uncorrect user or password
+</div>
+			
         </div>        
     </div>
 
@@ -117,7 +126,7 @@
       <div class="wrap-popup sign-up"  id="popup-login">
           
 
-        <form class="popup-form form-sign login" method="POST" id="login-form" action="/login">
+        <form class="popup-form form-sign login" method="POST" id="login-form" action="/">
         <h2>Увійти</h2>
         <input type='hidden' name='csrfmiddlewaretoken' value='biGM2sjoH3RGahe661QY2SnJPh2Pf7qU' />
         <div class="error" id="__all__">              
@@ -212,6 +221,7 @@
 
       </div> 
     -</div>
+
 
  <!--Scripts-->     
             <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
