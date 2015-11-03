@@ -22,22 +22,19 @@ public class UsersService {
 	@PostConstruct
 	@Transactional
 	public void createAdminUser() {		
-		register("admin", "admin@mail.com", 40, "ua", "qwerty");
+		register("admin@mail.com","123456");
 	}
 	
 	@Transactional(readOnly = false)
-	public void register(String login, String email, int age, String country, String pass) {
+	public void register(String login, String pass) {
 		String passHash = new BCryptPasswordEncoder().encode(pass);
 		
-		User u = new User(login, email.toLowerCase(), age, country, passHash);
-
-		// підпишемо користувача на самого себе
-		u.getSubscriptions().add(u);
+		User u = new User(login, passHash);
 
 		usersRepo.save(u);
 	}
 	
-	@Transactional
+	/*@Transactional
 	public List<User> getSubscribeRecommendations() {
 		User currentUser = usersRepo.findOne(User.getCurrentUserId());
 
@@ -49,9 +46,9 @@ public class UsersService {
 		}
 		
 		return usersRepo.findFirst10ByIdNotIn(ignoreIds);
-	}
+	}*/
 	
-	@Transactional
+	/*@Transactional
 	public void subscribe(String login) {
 		User u = usersRepo.findByLogin(login);
 
@@ -61,6 +58,6 @@ public class UsersService {
 		if(currentUser.getId() != u.getId()) {		
 			currentUser.getSubscriptions().add(u);
 		}
-	}
+	}*/
 	
 }

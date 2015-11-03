@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Занотутка</title>   
+               <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+               <link rel="stylesheet" href="css/style.min.css"/>            
+        </head>
+<body>
+<div class="wrap-all-content">
+    <div class="wrapper main-body inner-page">
+       <!-- Header -->
+       <header class="wrap-header main-header">
+           <!-- Navigation -->
+           <nav class="navbar navbar-default">
+               <div class="content">
+                 
+                   <div class="navbar-user-profile">
+                       <a href="">
+                           <img src="images/avatar-img.jpg" alt="user_1" class="avatar-image-url">
+                       </a>
+                   </div> 
+
+                   <div class="toggle-off-menu right-menu" data-toggle="#off-canvas-menu-right">
+                       <span></span>
+                   </div>
+
+                   <div class="navbar-header">
+                       <a class="navbar-brand" href="/">Занотутка</a>
+                   </div>  
+
+               </div>
+               <!-- /.container-fluid -->
+           </nav>
+       </header>
+
+       <div class="main-content">           
+           
+           <div class="content">
+               <div class="row">
+                  <div class="col-xs-12 col-sm-3 wrap-user-menu">
+                   <div class="block-content"> 
+
+                      <div class="text-center">
+                        <img href="userpage" src="images/avatar-img.jpg" alt="" class="avatar-image avatar-image-url"/>
+                      </div>
+                      <div>   
+                       <span th:text="${user.login}">Такий-то юзер</span>                               
+                     </div>   
+
+                                                
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-9 wrap-content-block">
+                  <div class="block-content">
+                      <h1>Сповіщення</h1>
+                      <div class="wrap-message">
+                         <div class="form-add-message">
+                            <div class="title">ЗАЛИШИТИ ЗАПИС</div>
+                            <form action="/post" method="POST" id="createmessage" name="createmessage">
+                                    <div class="form-group">                           
+                                            <textarea cols="40" id="id_message" maxlength="1000" name="message" rows="10" style =" font-size : 20px"></textarea>
+                                    </div>
+                                
+                                <div class="wrap-btns">
+                                    <button type="submit" class="btn btn-green btn-check-changes" form="createReview">Додати запис</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="wrap-list-message">
+          
+                              <div class="item">    
+                               <span class="remove-item"><i class="glyphicon glyphicon-remove"></i></span> 
+                                  <div class="title">
+                                    <a href=" "> <img src="images/avatar-img.jpg" alt="" class="avatar-image avatar-image-url"/></a>
+                                    <a href=" " class="user-name">user_1</a>
+                                    <span class="date-time" 
+									style="font-size: 15px;>Серпень 27, 2015 в 04:21 </span>     
+                                  </div>                                                
+                                  <div class="message-text">
+                                     - Никто не возвращается из путешествий таким, каким он был раньше.
+- Ты же просто сходил за хлебом.
+- Я видел людей.
+                                  </div>                                                  
+                              </div>   
+							     <div class="item">    
+                               <span class="remove-item"><i class="glyphicon glyphicon-remove"></i></span> 
+                                  <div class="title">
+                                    <a href=" "> <img src="images/avatar-img.jpg" alt="" class="avatar-image avatar-image-url"/></a>
+                                    <a href=" " class="user-name">user_1</a>
+                                    <span class="date-time" 
+									style="font-size: 15px;>Серпень 27, 2015 в 04:21 </span>     
+                                  </div>                                                
+                                  <div class="message-text">
+                                     - Никто не возвращается из путешествий таким, каким он был раньше.
+- Ты же просто сходил за хлебом.
+- Я видел людей.
+                                  </div>                                                  
+                              </div>   
+							     <div class="item">    
+                               <span class="remove-item"><i class="glyphicon glyphicon-remove"></i></span> 
+                                  <div class="title">
+                                    <a href=" "> <img src="images/avatar-img.jpg" alt="" class="avatar-image avatar-image-url"/></a>
+                                    <a href=" " class="user-name">user_1</a>
+                                    <span class="date-time" 
+									style="font-size: 15px;>Серпень 27, 2015 в 04:21 </span>     
+                                  </div>                                                
+                                  <div class="message-text">
+                                     - Никто не возвращается из путешествий таким, каким он был раньше.
+- Ты же просто сходил за хлебом.
+- Я видел людей.
+                                  </div>                                                  
+                              </div>   
+                            
+                                                         
+                          
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
+            </div>
+           </div>
+         
+       </div>
+       
+    </div>
+
+      <footer class="wrapper main-footer">
+        <div class="content">
+            <div class="footer-links">                
+                <a href="/about/">Про нас</a>                
+                <a href="/policy/">Політика конфіденціальності</a>                
+                <a href="/teams/">Правила сервісу</a>                
+            </div>
+        </div>
+    </footer>
+    </footer>
+
+    <div class="mfp-hide">
+      <div class="wrap-popup sign-up" id="popup-forgot-password">
+          
+
+
+
+</div>
+ </body>
+</html>

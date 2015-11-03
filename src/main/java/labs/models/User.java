@@ -26,8 +26,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(indexes = {
-  @Index(columnList="login", unique = true), 
-  @Index(columnList="email", unique = true)
+  @Index(columnList="login", unique = true)
 })
 public class User implements UserDetails {
 	private static final long serialVersionUID = -532710433531902917L;
@@ -42,36 +41,20 @@ public class User implements UserDetails {
 	private String login;
 	
 	@NotBlank
-	@Size(min = 1, max = 512)
-	@Column(unique = true)
-	private String email;
-	
-	@NotBlank
 	@Size(min = 1, max = 100)
 	private String password;
 	
-	@Min(16)
-	private int age;
-	
-	@NotNull
-	@Size(min=2, max=2)
-	private String country;
 	
 	@OneToMany(mappedBy = "author")
 	private List<Post> posts = new ArrayList<>();
-	
-	@ManyToMany
-	private Set<User> subscriptions = new HashSet<>();
+
 	
 	public User() {
 		super();
 	}
 	
-	public User(String login, String email, int age, String country, String password) {
+	public User(String login,String password) {
 		this.login = login;
-		this.email = email;
-		this.age = age;
-		this.country = country;
 		this.password = password;
 	}
 
@@ -91,13 +74,6 @@ public class User implements UserDetails {
 		this.login = login;
 	}
 	
-	public String getEmail() {
-		return email;
-	}
-	
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	public List<Post> getPosts() {
 		return posts;
@@ -105,30 +81,6 @@ public class User implements UserDetails {
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
-	}
-
-	public Set<User> getSubscriptions() {
-		return subscriptions;
-	}
-
-	public void setSubscriptions(Set<User> subscriptions) {
-		this.subscriptions = subscriptions;
-	}
-	
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
 	}
 
 	@Override

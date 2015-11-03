@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Занотутка</title>   
+               <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+               <link rel="stylesheet" href="css/style.min.css"/>
+            
+        </head>
+<body>
+<div class="wrap-all-content">
+    <div class="wrapper main-body inner-page">
+       <!-- Header -->
+       <header class="wrap-header main-header">
+           <!-- Navigation -->
+           <nav class="navbar navbar-default">
+               <div class="content">
+                 
+                   <div class="navbar-user-profile">
+                       <a href="userpage">
+                           <img src="images/avatar-img.jpg" alt="user_1" class="avatar-image-url">
+                       </a>
+                   </div> 
+
+                   <div class="toggle-off-menu right-menu" data-toggle="#off-canvas-menu-right">
+                       <span></span>
+                   </div>
+
+                   <div class="navbar-header">
+                       <a class="navbar-brand" href="/">Занотутка</a>
+                   </div>  
+
+               </div>
+               <!-- /.container-fluid -->
+           </nav>
+       </header>
+
+       <div class="main-content">           
+           
+           <div class="content">
+               <div class="row">
+                 <div class="col-xs-12 col-sm-9 wrap-content-list right">
+                    <div class="text-center">
+                        <h1>Найпопулярніше</h1>
+                    </div>
+                    <ul class="pagination" th:if="${pagesCount} > 1">
+        <li th:each="page: ${#numbers.sequence(1, pagesCount)}" th:class="${page} == ${currentPage} ? 'active'">
+          <a href="#" th:href="@{/home(page=${page})}">
+            <span th:text="${page}"></span>
+          </a>
+        </li>
+    	</ul>
+
+
+
+
+
+    <div class="posts-list-section">
+        <div class="content">
+            <div class="row">
+
+      
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                  <div class="thumbnail block-with-payment">
+                      <div class="wrap-img">
+                        <a href="">          
+                         <img src="images/no-photo.jpg" alt="Colors of Cats">
+                        </a>                  
+                      </div>
+                      <div class="caption">                               
+                          <h3 class="text-center">Тут буде опис новини</h3>                     
+                          <p class="text-center">автор 
+                                    <a href="">такий-то чувак</a>
+                           </p>
+                      </div>
+                      <div class="wrap-btns">
+                        <a href="" class="btn btn-green">
+                                Прочитати
+                        </a>
+                      </div>                                       
+                  </div>               
+              </div>  
+			  
+			       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                  <div class="thumbnail block-with-payment">
+                      <div class="wrap-img">
+                        <a href="">          
+                         <img src="images/no-photo.jpg" alt="Colors of Cats">
+                        </a>                  
+                      </div>
+                      <div class="caption">                               
+                          <h3 class="text-center">Тут буде опис новини</h3>                     
+                          <p class="text-center">автор 
+                                    <a href="">такий-то чувак</a>
+                           </p>
+                      </div>
+                      <div class="wrap-btns">
+                        <a href="" class="btn btn-green">
+                                Прочитати
+                        </a>
+                      </div>                                       
+                  </div>               
+              </div>   
+			  
+			       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                  <div class="thumbnail block-with-payment">
+                      <div class="wrap-img">
+                        <a href="">          
+                         <img src="images/no-photo.jpg" alt="Colors of Cats">
+                        </a>                  
+                      </div>
+                      <div class="caption">                               
+                          <h3 class="text-center">Тут буде опис новини</h3>                     
+                          <p class="text-center">автор 
+                                    <a href="">такий-то чувак</a>
+                           </p>
+                      </div>
+                      <div class="wrap-btns">
+                        <a href="" class="btn btn-green">
+                                Прочитати
+                        </a>
+                      </div>                                       
+                  </div>               
+              </div>     
+			  
+			       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                  <div class="thumbnail block-with-payment">
+                      <div class="wrap-img">
+                        <a href="">          
+                         <img src="images/no-photo.jpg" alt="Colors of Cats">
+                        </a>                  
+                      </div>
+                      <div class="caption">                               
+                          <h3 class="text-center">Тут буде опис новини</h3>                     
+                          <p class="text-center">автор 
+                                    <a href="">такий-то чувак</a>
+                           </p>
+                      </div>
+                      <div class="wrap-btns">
+                        <a href="" class="btn btn-green">
+                                Прочитати
+                        </a>
+                      </div>                                       
+                  </div>               
+              </div>     
+        
+           
+          
+           </div>
+        </div>
+    </div>
+
+            </div>
+               </div>
+           </div>
+         
+       </div>
+       
+    </div>
+
+    <footer class="wrapper main-footer">
+        <div class="content">
+            <div class="footer-links">                
+                <a href="/about/">Про нас</a>                
+                <a href="/policy/">Політика конфіденціальності</a>                
+                <a href="/teams/">Правила сервісу</a>                
+            </div>
+        </div>
+    </footer>          
+
+    <div class="wrap-off-canvas-menu left" id="off-canvas-menu-left">
+     <div class="close-off-canvas-menu">
+        <span class="text">Категорії</span>
+		<span class="icon icon-menu"></span>
+     </div>
+      
+     <div class="sidebar-menu">
+        <form action=""  id='filterForm'>                  
+        <ul class="filter-menu">   
+                    
+        <li class="open">
+            <div class="name-cat">
+                <span class="open-cat title">Категорії</span>
+            </div>                        
+            <div class="filter-list-cat open">
+                <ul>
+                 
+
+                        <li class="item-category">
+                            <div class="name-cat">
+                                <span class="link-cat">така-то категорія</span>
+                            </div>
+                        </li>
+						
+
+
+                </ul>
+            </div>
+        </li>
+
+    </ul>
+    </form>
+      </div>
+    </div>
+    
+</div>
+ </body>
+</html>

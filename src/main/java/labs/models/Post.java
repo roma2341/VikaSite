@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Table(name = "posts")
 public class Post {
-	
+	final int DESCRIPTION_LENGTH = 25;
 	@Id
 	@GeneratedValue
     private Long id;
@@ -61,6 +61,11 @@ public class Post {
 
 	public void setText(String text) {
 		this.text = text;
+	}
+	public String getDescription(){
+		if (text.length()>DESCRIPTION_LENGTH)
+			return text.substring(0, DESCRIPTION_LENGTH-1);
+		return text;
 	}
 
 	public Date getCreatedAt() {

@@ -24,9 +24,8 @@ public class PostsService {
 	@Transactional
 	public Page<Post> getPosts(int page, int pageSize) {
 		User currentUser = usersRepo.findOne(User.getCurrentUserId());
-		
-		return postsRepo.findByAuthorInOrderByCreatedAtDesc(
-				currentUser.getSubscriptions(),
+		System.out.println("current user id:"+currentUser.getId());
+		return postsRepo.findByAuthorId(currentUser.getId(),
 				new PageRequest(page-1, pageSize) // spring рахує сторінки з нуля
 		);
 	}

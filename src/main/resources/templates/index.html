@@ -1,57 +1,229 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha256-sHwgyDk4CGNYom267UJX364ewnY4Bh55d53pxP5WDug= sha512-mkkeSf+MM3dyMWg3k9hcAttl7IVHe2BA1o/5xKLl4kBaP0bih7Mzz/DBy4y6cNZCHtE2tPgYBYH/KtEjOQYKxA==" crossorigin="anonymous" />
-    <title>Реєстрація</title>
-  </head>
-  <body>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Занотутка</title>   
+               <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+               <link rel="stylesheet" href="css/style.min.css"/>
+            
+        </head>
+<body>
+<div class="wrap-all-content">
+    <div class="wrapper main-body">
+      <header class="wrap-header main-header">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="content">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <a class="navbar-brand page-scroll" href="#page-top">Занотутка</a>
+                </div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-4 col-xs-offset-4">
-				<form method="POST" action="/register">
-					<div class="alert alert-danger" role="alert" th:if="${errors != null}">
-					  <span th:each="err: ${errors}">
-					  	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-					  	<span th:text="${err.field}"></span> 
-					  	<span th:text="${err.defaultMessage}">Enter a valid email address</span>
-					  	<br/>
-					  </span>
-					</div>
-				
-					<div class="form-group">
-						<label for="reg-login">Логін</label>
-						<input class="form-control" type="text" name="login" id="reg-login" th:value="${form.login}"></input>
-					</div>
-					<div class="form-group">
-						<label for="reg-email">Пошта</label>
-						<input class="form-control" type="text" name="email" id="reg-email" th:value="${form.email}"></input>
-					</div>
-					<div class="form-group">
-						<label for="post-text">Пароль</label>
-						<input class="form-control" type="password" name="pass" id="post-text"></input>
-					</div>
-					
-					<div class="form-group">
-						<label for="post-text">Вік</label>
-						<input class="form-control" type="text" name="age" id="post-text" th:value="${form.age}"></input>
-					</div>
-					
-					<div class="form-group">
-						<label for="post-text">Країна</label>
-						<select class="form-control" name="country">
-							<option value="ua" th:selected="${'ua'.equals(form.country)}">Україна</option>
-							<option value="by" th:selected="${'by'.equals(form.country)}">Білорусь</option>
-							<option value="pl" th:selected="${'pl'.equals(form.country)}">Польща</option>
-						</select>						
-					</div>
-					
-					<button type="submit" class="btn btn-success">Зареєструватись</button>
-					<a href="/login" class="pull-right btn btn-link">Вхід</a>
-				</form>
-			</div>
-		</div>	
-	</div>
-  </body>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="popup-link"  data-mfp-src="#popup-login" href="#popup-login">Увійти</a>
+                        </li>
+                        <li>
+                            <a class="popup-link" data-mfp-src="#popup-signup" href="#popup-signup">
+							Зареєструватися</a>
+                        </li>   
+						 <li>
+                            <a class="popup-link" data-mfp-src="#popup-about" href="#popup-about">
+							Про Нас</a>
+                        </li>   
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+
+     <div class="wrap-banner-main"> <!--search-->
+        <div class="content intro-text" style="background-color:rgba(0, 0, 0, 0.5);">
+            <div class="intro-heading" style="font-size: 40px; line-height: 100px;" >
+			Приєднуйся до нас</div>
+            <div class="intro-lead-in">Новий український блог-сервіс набирає обертів  </div>  
+			<div class="intro-lead-in"> Ми чекаємо на Твоїх друзів</div>  
+			<div class="intro-lead-in"> Ми чекаємо саме на тебе</div> 
+        </div>        
+    </div>
+
+    <div class="wrap-about-noty">
+      <div class="content">
+          <p>“Ми не можемо заборонити птахам пролітати над нашою головою, але ми не дозволяємо їм сідати нам на голову і вити на ній свої гнізда. Подібно до цього ми не можемо заборонити поганим думкам інколи приходити до нас в голову, але ми повинні не дозволяти їм гніздитися в нашому мозку...”</p>
+          <div class="list-users text-center">
+		   <!-- /.container-fluid alt = вспливаюча підказка -->
+            <a href=""><img src="images/avatar-img.jpg" alt=""></a>
+            <a href=""><img src="images/avatar-img.jpg" alt=""></a>
+            <a href=""><img src="images/avatar-img.jpg" alt=""></a>
+            <a href=""><img src="images/avatar-img.jpg" alt=""></a>
+            <a href=""><img src="images/avatar-img.jpg" alt=""></a>
+            <a href=""><img src="images/avatar-img.jpg" alt=""></a>
+            <a href=""><img src="images/avatar-img.jpg" alt=""></a>
+            <a href=""><img src="images/avatar-img.jpg" alt=""></a>
+          </div>
+          <p class="text-center">
+            <a href="" class="btn btn-green">Нумо приєднуйтесь</a>
+          </p>
+      </div>
+    </div>
+
+
+       
+    </div>
+
+    <footer class="wrapper main-footer">
+        <div class="content">
+            <div class="footer-links">                
+                <a href="/about/">Про нас</a>                
+                <a href="/policy/">Політика конфіденціальності</a>                
+                <a href="/teams/">Правила сервісу</a>                
+            </div>
+        </div>
+    </footer>
+
+    <div class="mfp-hide">
+      <div class="wrap-popup sign-up" id="popup-forgot-password">
+
+    <form class="popup-form form-sign password_reset" method="POST" action="/accounts/password/reset/" id="forgot_form">
+      <input type='hidden' name='csrfmiddlewaretoken' value='biGM2sjoH3RGahe661QY2SnJPh2Pf7qU' />
+      <h2>ВІДНОВЛЕННЯ ПАРОЛЯ</h2>
+	  <!-- Элемент <fieldset> предназначен для группирования элементов формы. -->
+      <fieldset class="form-item ">          
+            <input id="id_email" name="email" placeholder="E-MAIL ADDRESS" size="30" type="email" />      
+          <div class="error">          
+          </div>
+      </fieldset>     
+
+      <fieldset class="form-item btn-wrap">
+        <button class="btn btn-green btn-submit" type="submit">Скинути пароль</button>
+      </fieldset>
+
+      <fieldset class="wrap-link-bottom small-marg center">
+        <div class="spec-text">
+          or <a href="/accounts/login/" class="popup-link" data-mfp-src="#popup-login">Назад до входу</a>
+        </div>
+    </fieldset>
+
+    </form>
+
+        </div>
+    </div>
+    <div class="mfp-hide">
+      <div class="wrap-popup sign-up"  id="popup-login">
+          
+
+        <form class="popup-form form-sign login" method="POST" id="login-form" action="/login">
+        <h2>Увійти</h2>
+        <input type='hidden' name='csrfmiddlewaretoken' value='biGM2sjoH3RGahe661QY2SnJPh2Pf7qU' />
+        <div class="error" id="__all__">              
+        </div>           
+          
+          <fieldset class="form-item">
+            <input autofocus="autofocus" id="id_login" name="login_logining" placeholder="Email" type="email" />
+            <div class="error" id="login">                
+            </div>
+          </fieldset>    
+          <fieldset class="form-item">
+            <input id="id_password" name="password_logining" placeholder="Password" type="password" />
+            <div class="error" id="password">               
+            </div>
+          </fieldset>     
+
+
+        <input type="hidden" name="next" value="/" />
+        <fieldset class="btn-wrap">
+          <button class="btn btn-green btn-submit" type="submit" >увійти</button>
+        </fieldset>
+
+        <fieldset class="wrap-link">      
+          or <a href="/accounts/password/reset/" class="popup-link" data-mfp-src="#popup-forgot-password">Ой... забув пароль</a>
+        </fieldset>
+
+        <fieldset class="wrap-link-bottom small-marg center">
+          <div class="spec-text">
+            У Вас ще нема акаунта? <a href="" class="popup-link" data-mfp-src="#popup-signup">УВІЙТИ</a>
+          </div>
+        </fieldset>
+
+        </form>
+        </div>
+    </div>
+
+
+
+                
+
+    <div class="mfp-hide"> 
+      <div class="wrap-popup sign-up" id="popup-signup">
+    <form class="popup-form form-sign signup" id="signup_form" method="post" action="/signup">
+
+    <h2>Увійти</h2>
+    <div class="error" id="__all__">        
+    </div>
+	
+    <div class="form-group-item">
+	
+      <fieldset class="form-item ">
+        <input id="id_email" maxlength="320" name="email_submiting" placeholder="Email" type="email" />
+        <div class="error">
+          
+        </div>
+      </fieldset>
+
+
+
+      <fieldset class="form-item ">
+        <input id="id_password1" name="password_submiting" placeholder="Пароль" type="password" />
+        <div class="error">
+          
+        </div>
+      </fieldset>
+
+    </div>
+
+    <input type='hidden' name='csrfmiddlewaretoken' value='biGM2sjoH3RGahe661QY2SnJPh2Pf7qU' />
+
+
+
+    <fieldset class="btn-wrap">
+      <button class="btn btn-green btn-submit" type="submit">СТВОРИТИ АКАУНТ</button>
+    </fieldset>
+
+    <fieldset class="wrap-link orange-link">
+      Увійшовши, ви приєднуєтесь        
+        <a href="/teams/" target="_blank">Правилами вткористання</a> і
+        
+        <a href="/policy/" target="_blank">Політикою конфіденціальності</a>
+    </fieldset>
+
+    <fieldset class="wrap-link-bottom small-marg center">
+      <div class="spec-text">
+        Ви вже зареєстровані? <a href="" class="popup-link" data-mfp-src="#popup-login">УВІЙТИ</a>
+      </div>
+    </fieldset>
+
+    </form>
+
+
+      </div> 
+    -</div>
+
+ <!--Scripts-->     
+            <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+            <script src="js/jquery.magnific-popup.min.js"></script>
+            <script src="js/moment.js"></script>
+            <script src="js/bootstrap-datetimepicker.js"></script>
+            <script src="js/bootstrap-select.js"></script>
+            <script src="js/default.js"></script>
+             
+    <!--Scripts-->
+
+</div>
+ </body>
 </html>
-

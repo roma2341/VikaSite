@@ -21,16 +21,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-            .antMatchers("/", "/register").permitAll() // дозволити анонімним користувачам заходити на '/' 
+            .antMatchers("/", "/register","/index","/signup","/login",
+            		"/css/*","/images/*","/js/*","/css/fonts/*")
+            .permitAll() // дозволити анонімним користувачам заходити на '/' 
             .anyRequest().authenticated() // всі інші запити потребують аутентифікації
             .and()
         .formLogin()
             .loginPage("/login")  // URL логіну
-            .usernameParameter("login") // назва параметру з логіном на формі
+            .usernameParameter("login_logining") // назва параметру з логіном на формі
+            .passwordParameter("password_logining")
             .permitAll() // дозволити всім заходити на форму логіну
             .and()
         .logout()
             .permitAll(); 
+        
     }
 
     @Override
