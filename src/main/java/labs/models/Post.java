@@ -46,6 +46,9 @@ public class Post {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public String getDataHTML(){
+		return "<pre>"+text+"</pre>";
+	}
 
 	public User getAuthor() {
 		return author;

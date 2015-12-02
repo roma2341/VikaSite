@@ -43,7 +43,7 @@
                    <div class="block-content"> 
 
                       <div class="text-center">
-                        <img href="userpage" src="images/avatar-img.jpg" alt="" class="avatar-image avatar-image-url"/>
+                       <a href="/userprofile"><img th:src="${user.getProfileImagePath()}" alt="" class="avatar-image avatar-image-url"/></a> 
                       </div>
                       <div>   
                        <span th:text="${user.login}">Такий-то юзер</span>   

@@ -30,6 +30,10 @@ public class PostsService {
 		);
 	}
 	@Transactional
+	public Post getPost(Long id){
+		return postsRepo.findOne(id);
+	}
+	@Transactional
 	public Page<Post> getAllPosts(int page, int pageSize) {
 		User currentUser = usersRepo.findOne(User.getCurrentUserId());
 		System.out.println("current user id:"+currentUser.getId());

@@ -33,7 +33,13 @@ public class UsersService {
 
 		usersRepo.save(u);
 	}
-	
+	@Transactional
+	public User getUser(Long id){
+		return usersRepo.findOne(id);
+	}
+	public void updateUserInfo(User u){
+		usersRepo.save(u);
+	}
 	/*@Transactional
 	public List<User> getSubscribeRecommendations() {
 		User currentUser = usersRepo.findOne(User.getCurrentUserId());

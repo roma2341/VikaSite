@@ -30,7 +30,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 })
 public class User implements UserDetails {
 	private static final long serialVersionUID = -532710433531902917L;
-	
+	public enum Gender {MALE,FEMALE,UNDEFINED};
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -40,6 +40,74 @@ public class User implements UserDetails {
 	@Column(unique = true)
 	private String login;
 	
+	@Size(min = 0, max = 512)
+	@Column(unique = false)
+	private String fullName;
+	
+	private Gender gender=Gender.UNDEFINED;
+	
+	public String getGenderTextRepresentation(){
+		switch (gender){
+		case UNDEFINED:
+			return "Не визначився";
+		case MALE:
+			return "Супермен";
+		case FEMALE:
+		return "Супервумен";
+		default:
+			return "Не визначився";
+		}
+	}
+	
+	@Size(min = 0, max = 512)
+	private String address;
+	
+	@Size(min = 0, max = 10)
+	private String phone;
+	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public Gender getGender() {
+		return gender;
+	}
+	public boolean isGenderSetted() {
+		return !(gender==Gender.UNDEFINED);
+	}
+	public String getProfileImagePath(){
+		switch (gender){
+		case UNDEFINED:
+			return "images/alien.png";
+		case MALE:
+			return "images/man.png";
+		case FEMALE:
+		return "images/girl.png";
+		default:
+			return "Не визначився";
+		}
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
 	@NotBlank
 	@Size(min = 1, max = 100)
 	private String password;
@@ -47,7 +115,8 @@ public class User implements UserDetails {
 	
 	@OneToMany(mappedBy = "author")
 	private List<Post> posts = new ArrayList<>();
-
+	
+	
 	
 	public User() {
 		super();

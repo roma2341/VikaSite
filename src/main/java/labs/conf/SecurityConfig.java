@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
      // дозволити анонімним користувачам заходити на ці каталоги
             .antMatchers("/", "/register","/index","/signup","/login",
-            		"/css/*","/images/*","/js/*","/css/fonts/*")
+            		"/css/*","/images/*","/js/*","/css/fonts/*","/vika/css/*")
             .permitAll() 
             .anyRequest().authenticated() // всі інші запити потребують аутентифікації
             .and()

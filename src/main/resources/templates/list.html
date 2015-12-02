@@ -40,21 +40,18 @@
            
            <div class="content">
                <div class="row">
-                 <div class="col-xs-12 col-sm-9 wrap-content-list left">
+                 <div class="col-sm-12 wrap-content-list left>
                     <div class="text-center">
-                        <h1>Найпопулярніше</h1>
-                    </div>
-                    <ul class="pagination" th:if="${pagesCount} > 1">
+                        <h2>Найпопулярніше</h2>
+                         <ul class="pagination" th:if="${pagesCount} > 1">
         <li th:each="page: ${#numbers.sequence(1, pagesCount)}" th:class="${page} == ${currentPage} ? 'active'">
+                    </div>
+                   
           <a href="#" th:href="@{/list(page=${page})}">
             <span th:text="${page}"></span>
           </a>
         </li>
     	</ul>
-
-
-
-
 
     <div class="posts-list-section">
         <div class="content">
@@ -65,7 +62,7 @@
                   <div class="thumbnail block-with-payment">
                       <div class="wrap-img">
                         <a href="">          
-                         <img src="images/no-photo.jpg" alt="Colors of Cats">
+                         <img th:src="${post.author.getProfileImagePath()}" alt="Colors of Cats">
                         </a>                  
                       </div>
                       <div class="caption">                               
@@ -73,7 +70,8 @@
                           <p class="text-center" th:text="${post.author.login}">автор</p>
                       </div>
                       <div class="wrap-btns">
-                        <a href="" class="btn btn-green">
+                       
+                        <a th:href="'/postdetails?post_id='+${post.id}" class="btn btn-green">
                                 Прочитати
                         </a>
                       </div>                                       
