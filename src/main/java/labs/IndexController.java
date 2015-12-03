@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import org.neo4j.cypher.internal.compiler.v2_1.planner.logical.findShortestPaths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -103,7 +105,7 @@ return "user_page";
 	public String storeUserInfo(HttpServletRequest request,@RequestParam(value="address",defaultValue = "") String address,
 			@RequestParam(value="phone",defaultValue = "") String phone,@RequestParam(value="fullName",defaultValue = "") String fullName,
 			@RequestParam(value="gender",defaultValue = "") Gender gender ) {
-		User u = usersService.getUser(User.getCurrentUserId());
+		User u = User.getCurrentUser();
 		u.setAddress(address);
 		u.setPhone(phone);
 		u.setFullName(fullName);
@@ -133,10 +135,16 @@ return "user_page";
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String register(@RequestParam("email_submiting") String email, 
 						   @RequestParam("password_submiting") String pass,HttpServletRequest request) {
-		
 		usersService.register(email, pass);
 
 		return "redirect:/";
+	}
+	@RequestMapping(value = "/remove_post_ajax", method = RequestMethod.GET)
+	public ResponseEntity togglePermission(@RequestParam("post_id") Long postId, HttpServletRequest request) {
+		postsService.removePost(postId);
+		//String referer = request.getHeader("Referer");
+	   // return "redirect:"+ referer;
+		return new ResponseEntity(HttpStatus.OK);
 	}
 	
 }

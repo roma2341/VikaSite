@@ -92,7 +92,7 @@ public class User implements UserDetails {
 		case FEMALE:
 		return "images/girl.png";
 		default:
-			return "Не визначився";
+			return "images/alien.png";
 		}
 	}
 
