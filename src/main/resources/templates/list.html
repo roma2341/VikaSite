@@ -61,7 +61,7 @@
       <div class="text-center"">
                   <div class="thumbnail block-with-payment">
                       <div class="wrap-img">
-                        <a href="">          
+                        <a th:href="'/userprofile?user_id='+${post.author.id}">          
                          <img th:src="${post.author.getProfileImagePath()}" alt="Colors of Cats">
                         </a>                  
                       </div>

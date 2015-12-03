@@ -23,6 +23,8 @@ public class UsersService {
 	@Transactional
 	public void createAdminUser() {		
 		register("admin@mail.com","123456");
+		register("a@mail.com","123456");
+		register("a2@mail.com","123456");
 	}
 	
 	@Transactional(readOnly = false)

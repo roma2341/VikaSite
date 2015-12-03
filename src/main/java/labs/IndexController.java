@@ -72,8 +72,23 @@ return "user_page";
 		return "textview";
 	}
 	@RequestMapping(value="/userprofile",method=RequestMethod.GET)
-		public String userProfile(Model model){
-			model.addAttribute("user",usersService.getUser(User.getCurrentUser().getId()));
+		public String userProfile(Model model,@RequestParam(value="user_id",defaultValue="")String userId){
+		Long id=0L;
+		boolean parsingSucces=true;
+		if (userId.length()>0)
+		{
+			try{
+		id = Long.parseLong(userId);
+		if (usersService.getUser(id)==null) id = User.getCurrentUser().getId();
+			}
+			catch(NumberFormatException numFormatException){
+				parsingSucces = false;
+			}
+		}
+		if (!parsingSucces || userId.length()==0) id = User.getCurrentUser().getId();
+		
+			model.addAttribute("user",usersService.getUser(id));
+			model.addAttribute("current_user_id",User.getCurrentUser().getId());
 			return "user_profile";
 		}
 	

@@ -23,7 +23,7 @@
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Sheena Kristin A.Eschor</h3>
+              <h3 class="panel-title" th:text="${user.fullName}"></h3>
             </div>
             <div class="panel-body">
               <div class="row">   
@@ -38,29 +38,34 @@
                              <tr>  
                         <td>Gender</td>
                         <td>
-                        <select name="gender" class="span1" th:field="${user.gender}">
+                        <select th:if="${user.id==current_user_id}" name="gender" class="span1" th:field="${user.gender}">
                         <option value="MALE">Супермен</option>
                         <option value="FEMALE">Супервумен</option>
                         <option value="UNDEFINED">Хтознащо</option>
                         </select>
+                        <p th:unless="${user.id==current_user_id}" th:text="${user.gender}"></p>
                         </td>
                       </tr>
                         <tr>
                         <td>Home Address</td>
-                        <td> <input type="text" th:field="${user.address}"> </input></td>
+                        <td> <input th:if="${user.id==current_user_id}" type="text" th:field="${user.address}"> </input>
+                        <p th:unless="${user.id==current_user_id}" th:text="${user.address}"></p>
+                        </td>
                       </tr>
                       <tr>
                         <td>Email</td>
                         <td><a th:text="${user.login}" th:href="'mailto:'+${user.login}">Це поле береться з моделі !!!</a></td>
                       </tr>
                         <td>Phone Number</td>
-                        <td><input th:field="${user.phone}"></input><br/><br/>
+                        <td><input th:if="${user.id==current_user_id}" th:field="${user.phone}"></input>
+                        <p th:unless="${user.id==current_user_id}" th:text="${user.phone}"></p>
                         </td>
                            
                       </tr>
                       </tr>
                         <td>Full name</td>
-                        <td><input type="text" th:field="${user.fullName}"></input><br/><br/>
+                        <td ><input th:if="${user.id==current_user_id}" type="text" th:field="${user.fullName}"></input>
+                        <p th:unless="${user.id==current_user_id}" th:text="${user.fullName}"></p>
                         </td>
                            
                       </tr>
@@ -68,7 +73,7 @@
                     </tbody>
                   </table>
                   
-                  <button type="submit" href="#" class="btn btn-primary">Зберегти персональні данні</button>
+                  <button th:if="${user.id==current_user_id}" type="submit" href="#" class="btn btn-primary">Зберегти персональні данні</button>
                 </form>
               </div>
             </div>
