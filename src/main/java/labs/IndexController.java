@@ -1,8 +1,10 @@
 package labs;
 
+import labs.models.Comment;
 import labs.models.Post;
 import labs.models.User;
 import labs.models.User.Gender;
+import labs.services.CommentService;
 import labs.services.PostsService;
 import labs.services.UsersService;
 
@@ -17,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +34,9 @@ public class IndexController {
 	
 	@Autowired
 	private UsersService usersService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	@RequestMapping("/")
 	public String index(Model model) {
@@ -100,6 +106,11 @@ return "user_page";
 		postsService.addPost(postText);
 		String referer = request.getHeader("Referer");
 	    return "redirect:"+ referer;
+	}
+	@RequestMapping(value = "/comment", method = RequestMethod.POST)
+	public ResponseEntity createComment(@RequestBody Comment comment) {
+		commentService.addComment(comment.getPost().getId(), comment.getText());
+		return new ResponseEntity(HttpStatus.OK);
 	}
 	@RequestMapping(value = "/storeuserinfo", method = RequestMethod.POST)
 	public String storeUserInfo(HttpServletRequest request,@RequestParam(value="address",defaultValue = "") String address,

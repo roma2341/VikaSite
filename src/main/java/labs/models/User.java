@@ -24,6 +24,11 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import labs.View;
+
+
 @Entity
 @Table(indexes = {
   @Index(columnList="login", unique = true)
@@ -40,10 +45,12 @@ public class User implements UserDetails {
 	@Column(unique = true)
 	private String login;
 	
+	@JsonView(View.Summary.class)
 	@Size(min = 0, max = 512)
 	@Column(unique = false)
 	private String fullName;
 	
+	@JsonView(View.Summary.class)
 	private Gender gender=Gender.UNDEFINED;
 	
 	public String getGenderTextRepresentation(){
@@ -59,9 +66,11 @@ public class User implements UserDetails {
 		}
 	}
 	
+	@JsonView(View.Summary.class)
 	@Size(min = 0, max = 512)
 	private String address;
 	
+	@JsonView(View.Summary.class)
 	@Size(min = 0, max = 10)
 	private String phone;
 	
