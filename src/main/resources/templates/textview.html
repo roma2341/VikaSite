@@ -8,6 +8,8 @@
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/mustache.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/comment.css" />
+<link rel="stylesheet" href="css/style.min.css"/>  
 <style type="text/css">
 h1.page-header {
 	margin-top: -5px;
@@ -26,6 +28,10 @@ div {
 	padding-top: 15px;
 	margin-top: -20px;
 }
+.header-text pre {
+   font-family: "courier new", courier, monospace;
+   font-size: 25px;
+}
 
 .footer {
 	width: 100%;
@@ -36,25 +42,91 @@ div {
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="wrap-all-content">
+    <div class="wrapper main-body inner-page">
+       <!-- Header -->
+       <header class="wrap-header main-header">
+           <!-- Navigation -->
+           <nav class="navbar navbar-default">
+               <div class="content">
+                 
+                   <div class="navbar-user-profile">
+                       <a href="">
+                           <img src="images/avatar-img.jpg" alt="user_1" class="avatar-image-url">
+                       </a>
+                   </div> 
 
-	<div class="container-fluid main-container">
-		<div th:utext="${author.login}"></div>
-		<div th:utext="${post.getDataHTML()}">some text</div>
+                   <div class="toggle-off-menu right-menu" data-toggle="#off-canvas-menu-right">
+                       <span></span>
+                   </div>
+
+                   <div class="navbar-header">
+                       <a class="navbar-brand" href="/">Занотутка</a>
+                   </div>  
+
+               </div>
+               <!-- /.container-fluid -->
+           </nav>
+       </header>
+
+       <div class="main-content">           
+
+
+	<div class="container-fluid main-container" >
+		<h1  th:utext="${author.login}"></h1>
+		<p class="header-text" th:utext="${post.getDataHTML()}">some text</p>
+		
 	</div>
 	
+		
+	
+	<div class="container">
+<div class="row">
+<div class="col-sm-12" >
 	<div>
-	<input type="text" id="comment_message">
-	<button type="button" class="btn btn-default" id="submit_comment" 
+	<textarea style="width: 100%;"  type="text" id="comment_message" rows="5"></textarea>
+	<button type="button" class="btn btn-green " id="submit_comment" 
 	onclick="onClickAddComment()">Comment</button>
 	</div>
-	<div id="comments">
+<div id="comments">
+
 	
-	</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+
+<div class="panel-body">
+Panel content
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+</div><!-- /col-sm-5 -->
+
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+	
+
 
 <script id="sample_template" type="text/template">
-<div style="color:red">
-{{text}}
+
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong>{{post.author.login}}</strong> <span class="text-muted">commented at {{simpleTimeCreated}}</span>
+<a class="remove-item" onclick="onClickRemoveBtn({{id}})">Remove</a> 
 </div>
+<div class="panel-body">
+<pre>
+{{text}}
+</pre>
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+
 </script>
 
 
@@ -85,6 +157,22 @@ var post_id = /*[[${post.id}]]*/'value';
    		 }
    		    });   	    	
 	}
+	function onClickRemoveBtn(id){
+		 $.ajax({
+	   		    type: 'POST',
+	   		    url: '/remove_comment',
+	   		 contentType: "application/json; charset=utf-8",
+	   		    cache: false,
+	   		 data: id,
+	   		processData:false,
+	   		    error: function(){
+	   		    	alert('error removing');
+	   		    },
+	   		 success:function(){
+	   			console.log("success sended comments");
+	   		 }
+	   		    });  
+	}
 	/*function onClickDeleteUserButton(id){
 		 
 	    	    	
@@ -101,7 +189,7 @@ var post_id = /*[[${post.id}]]*/'value';
     $(document).ready(function () {
     	
     		 var template = $('#sample_template').html();
-    		 var interval = 1000;   //number of mils between each call
+    		 var interval = 500;   //number of mils between each call
     		 function addComment(comment){
     			 $('#comments').append((Mustache.to_html(template,comment)));
     	     }

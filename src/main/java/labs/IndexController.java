@@ -112,6 +112,12 @@ return "user_page";
 		commentService.addComment(comment.getPost().getId(), comment.getText());
 		return new ResponseEntity(HttpStatus.OK);
 	}
+	@RequestMapping(value = "/remove_comment", method = RequestMethod.POST)
+	public ResponseEntity removeComment(@RequestBody Long commentId) {
+		if (commentService.findComment(commentId).getAuthor().getId()==User.getCurrentUserId())
+		commentService.removeComment(commentId);
+		return new ResponseEntity(HttpStatus.OK);
+	}
 	@RequestMapping(value = "/storeuserinfo", method = RequestMethod.POST)
 	public String storeUserInfo(HttpServletRequest request,@RequestParam(value="address",defaultValue = "") String address,
 			@RequestParam(value="phone",defaultValue = "") String phone,@RequestParam(value="fullName",defaultValue = "") String fullName,

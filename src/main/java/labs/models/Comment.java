@@ -1,5 +1,6 @@
 package labs.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ public class Comment {
 	@GeneratedValue
     private Long id;
 	
+	@JsonView(View.Summary.class)
 	@NotNull
 	@ManyToOne
     private User author;
@@ -69,14 +71,19 @@ public class Comment {
     @Size(min = 1, max = 1024)
     private String text;
 	
+	@JsonView(View.Summary.class)
 	@NotNull
     private Date createdAt;
+	
+	@JsonView(View.Summary.class)
+	private String simpleTimeCreated;
 	
 	public Comment(User author,Post post,String text){
 		this.author=author;
 		this.text=text;
 		this.post=post;
 		createdAt=new Date();
+		simpleTimeCreated = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(createdAt);
 	}
 
 	public Comment(){

@@ -28,6 +28,12 @@ public class CommentService {
 		
 	}
 	@Transactional
+	public Comment findComment(Long id) {
+		Comment comment = commentRepo.findOne(id);
+		return comment; // spring рахує сторінки з нуля
+		
+	}
+	@Transactional
 	public void addComment(Long postId,String text) {
 		User currentUser = User.getCurrentUser();
 		Post post = postsRepo.findOne(postId);

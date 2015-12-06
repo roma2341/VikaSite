@@ -40,6 +40,7 @@ public class User implements UserDetails {
 	@GeneratedValue
 	private Long id;
 	
+	@JsonView(View.Summary.class)
 	@NotBlank
 	@Size(min = 1, max = 512)
 	@Column(unique = true)
